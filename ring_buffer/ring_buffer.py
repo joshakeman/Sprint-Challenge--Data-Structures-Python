@@ -18,7 +18,11 @@ class RingBuffer:
       temp[self.current] = item
       # temp.pop()
       self.storage = temp
-      self.current += 1
+        
+      if self.current < self.capacity - 1: 
+        self.current += 1
+      else:
+        self.current = 0
       # if self.current < self.capacity:
       #   self.current + 1
       # else:
@@ -63,17 +67,21 @@ class RingBuffer:
     return return_list
 
 
-# thing = RingBuffer(5)
+thing = RingBuffer(5)
 
-# print(thing.append('a'))
-# print(thing.append('b'))
-# print(thing.append('c'))
-# print(thing.append('d'))
-# print(thing.append('e'))
-# print(thing.append('f'))
-# print(thing.append('g'))
-# print(thing.append('h'))
-# print(thing.append('i'))
+print(thing.append('a'))
+print(thing.append('b'))
+print(thing.append('c'))
+print(thing.append('d'))
+print(thing.append('e'))
+print(thing.append('f'))
+print(thing.append('g'))
+print(thing.append('h'))
+print(thing.append('i'))
+print(thing.append('j'))
+print(thing.append('k'))
+
+
 
 
 
