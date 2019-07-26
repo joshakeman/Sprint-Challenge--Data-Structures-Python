@@ -5,39 +5,85 @@ class RingBuffer:
     self.storage = [None]*capacity
 
   def append(self, item):
-    self.storage.insert(0, item)
-    # self.get()
+    
     # print(self.storage)
+    temp = self.get()
+    # temp = self.storage
 
-    return_list = []
-    for i in range(len(self.storage)):
-      # print (self.storage[i])
-      if self.storage[i] != None:
-        # print("true")
-        return_list.append(self.storage[i])
+    if len(temp) < 5:
+      temp.append(item)
+      self.storage = temp + [None]*(5-len(temp))
+    elif len(temp) == 5:
+      print(self.current)
+      temp[self.current] = item
+      # temp.pop()
+      self.storage = temp
+        
+      if self.current < self.capacity - 1: 
+        self.current += 1
       else:
-        break
-    self.storage.pop()
-    return_list.reverse()
-    return return_list
+        self.current = 0
+      # if self.current < self.capacity:
+      #   self.current + 1
+      # else:
+      #   self.current = 0
+
+    return temp
+    # temp = self.get()
+
+    # if len(temp) < 5:
+    #   temp.append(item)
+    #   self.storage.append(item)
+    #   self.storage.pop()
+    #   print(self.storage)
+    # return temp 
+
+    # # self.get()
+    # # print(self.storage)
+
+    # return_list = []
+    # for i in range(len(self.storage)):
+    #   # print (self.storage[i])
+    #   if self.storage[i] != None:
+    #     # print("true")
+    #     return_list.append(self.storage[i])
+    #   else:
+    #     break
+    # return_list.reverse()
+    # return return_list
+
 
   def get(self):
-
+    
     return_list = []
     for i in range(len(self.storage)):
       # print (self.storage[i])
       if self.storage[i] != None:
         # print("true")
         return_list.append(self.storage[i])
-      else:
-        break
-    self.storage = return_list
-    return_list.reverse()
+    
+    # self.storage = return_list
+    # return_list.reverse()
     return return_list
 
 
-# thing = RingBuffer(5)
+thing = RingBuffer(5)
 
-# print(thing.append('a'))
-# print(thing.append('b'))
-# print(thing.get())
+print(thing.append('a'))
+print(thing.append('b'))
+print(thing.append('c'))
+print(thing.append('d'))
+print(thing.append('e'))
+print(thing.append('f'))
+print(thing.append('g'))
+print(thing.append('h'))
+print(thing.append('i'))
+print(thing.append('j'))
+print(thing.append('k'))
+
+
+
+
+
+
+
